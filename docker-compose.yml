@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  reddit-predict:
+    command: bash
+    ports:
+      - "5555:8501" # Streamlit port
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - "./:/app"
+    # equivalent to docker run -i
+    stdin_open: true
+    # equivalent to docker run -t
+    tty: true
+# Start with:
+# docker compose run reddit-predict
+# or:
+# docker compose run -p 5555:8501 reddit-predict
